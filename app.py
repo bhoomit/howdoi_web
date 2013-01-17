@@ -28,7 +28,7 @@ def hello():
         print traceback.format_exc()
         return jsonify({'status':'error','msg': e.args ,'traceball':traceback.format_exc()})
 
-    return result
+    return jsonify({'status':'success','data': result})
 
 
 if __name__ == '__main__':

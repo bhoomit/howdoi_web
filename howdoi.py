@@ -68,6 +68,7 @@ def get_instructions(args):
     page = get_result(link)
     html = pq(page)
     first_answer = html('.answer').eq(0)
+    print first_answer
     instructions = first_answer.find('pre') or first_answer.find('code')
     if args['all'] or not instructions:
         text = first_answer.find('.post-text').eq(0).text()

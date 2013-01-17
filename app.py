@@ -24,6 +24,7 @@ def hello():
     try:
         query = urllib.quote_plus(request.args.get('q'))
         result = howdoi.get_instructions({'query': query, 'pos':1 ,'all': 0})
+        print result
     except Exception as e:
         print traceback.format_exc()
         return jsonify({'status':'error','msg': e.args ,'traceball':traceback.format_exc()})

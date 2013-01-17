@@ -2,7 +2,7 @@ import os
 import urllib, json, traceback
 from functools import wraps
 from flask import Flask, redirect, request, current_app, jsonify
-from howdoi import howdoi
+import howdoi
 
 app = Flask(__name__)
 

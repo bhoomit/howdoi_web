@@ -83,7 +83,7 @@ def get_instructions(args):
 def howdoi(args):
     args['query'] = ' '.join(args['query']).replace('?', '')
     instructions = get_instructions(args) or 'Sorry, couldn\'t find any help with that topic'
-    print instructions
+    return instructions
 
 
 def command_line_runner():

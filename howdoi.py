@@ -61,7 +61,7 @@ def get_instructions(args):
         return None
     text = None
     
-    for link in links
+    for link in links:
         #link = get_link_at_pos(links, args['pos'])
         if args.get('link'):
             return link

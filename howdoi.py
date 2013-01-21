@@ -91,13 +91,13 @@ def get_instructions(args):
             first_answer = html('.answer').eq(0)
         
         instructions = first_answer.find('pre') or first_answer.find('code')
-        
+
         if args['all'] or not instructions:
             text = first_answer.find('.post-text').eq(0).text()
         else:
             text = instructions.eq(0).text()
         
-        if not text or text = '':
+        if not text:
             continue
 
     return text

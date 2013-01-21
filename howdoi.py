@@ -70,8 +70,10 @@ def get_link_at_pos(links, pos):
 
 def get_instructions(args):
     links = get_google_links(args['query'])
+    
     if not links:
         return None
+    
     text = None
     
     for link in links:
@@ -81,7 +83,7 @@ def get_instructions(args):
 
         if "stackoverflow.com" in link:
             arr = link.split('/')
-            first_answer = get_stack_result(int(arr[4]))
+            first_answer = pg(get_stack_result(int(arr[4])))
         else:
             link = link + '?answertab=votes'
             page = get_result(link)
@@ -94,7 +96,8 @@ def get_instructions(args):
             text = first_answer.find('.post-text').eq(0).text()
         else:
             text = instructions.eq(0).text()
-        if not text:
+        
+        if not text or text = '':
             continue
 
     return text

@@ -38,7 +38,7 @@ def get_result(url):
 def get_stack_result(q_id):
     print str(q_id)
     question = site.question(q_id) 
-    answers = question.answers[0].body
+    answers = question.answers
     if len(answers) < 1:
         return ''
     return answers[0].body

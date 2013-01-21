@@ -14,6 +14,7 @@ import requests
 import urllib
 import stackexchange
 import json
+
 from pyquery import PyQuery as pq
 
 S_KEY = 'PYAS3ZkXgxblnJFaB1BAmA(('
@@ -83,7 +84,7 @@ def get_instructions(args):
 
         if "stackoverflow.com" in link:
             arr = link.split('/')
-            first_answer = pg(get_stack_result(int(arr[4])))
+            first_answer = pq(get_stack_result(int(arr[4])))
         else:
             link = link + '?answertab=votes'
             page = get_result(link)

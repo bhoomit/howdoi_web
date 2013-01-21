@@ -13,6 +13,8 @@ import re
 import requests
 import urllib
 import stackexchange
+site = stackexchange.Site(stackexchange.StackOverflow)
+site.be_inclusive()
 import json
 
 from pyquery import PyQuery as pq
@@ -93,7 +95,7 @@ def get_instructions(args):
             first_answer = html('.answer').eq(0)
         
         instructions = first_answer.find('pre') or first_answer.find('code')
-
+        print instructions
         if args['all'] or not instructions:
             text = first_answer.find('.post-text').eq(0).text()
         else:

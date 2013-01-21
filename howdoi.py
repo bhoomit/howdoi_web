@@ -58,26 +58,29 @@ def get_link_at_pos(links, pos):
 def get_instructions(args):
     links = get_google_links(args['query'])
     if not links:
-        return ''
-
-    link = get_link_at_pos(links, args['pos'])
-    if args.get('link'):
-        return link
-
-    link = link + '?answertab=votes'
-    page = get_result(link)
-    html = pq(page)
-    print html
-    first_answer = html('.answer').eq(0)
-    print first_answer
-    instructions = first_answer.find('pre') or first_answer.find('code')
-    print instructions
-    if args['all'] or not instructions:
-        text = first_answer.find('.post-text').eq(0).text()
-    else:
-        text = instructions.eq(0).text()
-    if not text:
         return None
+    text = None
+    
+    for link in links
+        #link = get_link_at_pos(links, args['pos'])
+        if args.get('link'):
+            return link
+
+        link = link + '?answertab=votes'
+        page = get_result(link)
+        html = pq(page)
+        print html
+        first_answer = html('.answer').eq(0)
+        print first_answer
+        instructions = first_answer.find('pre') or first_answer.find('code')
+        print instructions
+        if args['all'] or not instructions:
+            text = first_answer.find('.post-text').eq(0).text()
+        else:
+            text = instructions.eq(0).text()
+        if not text:
+            continue
+
     return text
 
 

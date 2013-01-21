@@ -101,8 +101,8 @@ def get_instructions(args):
         else:
             text = instructions.eq(0).text()
         
-        if not text:
-            continue
+        if text:
+            break
 
     return text
 

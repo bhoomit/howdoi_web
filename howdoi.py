@@ -67,6 +67,7 @@ def get_instructions(args):
     link = link + '?answertab=votes'
     page = get_result(link)
     html = pq(page)
+    print html
     first_answer = html('.answer').eq(0)
     print first_answer
     instructions = first_answer.find('pre') or first_answer.find('code')
@@ -76,13 +77,14 @@ def get_instructions(args):
     else:
         text = instructions.eq(0).text()
     if not text:
-        return ''
+        return None
     return text
 
 
 def howdoi(args):
     args['query'] = ' '.join(args['query']).replace('?', '')
     instructions = get_instructions(args) or 'Sorry, couldn\'t find any help with that topic'
+    print instructions
     return instructions
 
 
@@ -100,3 +102,4 @@ def command_line_runner():
 
 if __name__ == '__main__':
     command_line_runner()
+    

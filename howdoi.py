@@ -12,17 +12,30 @@ import argparse
 import re
 import requests
 import urllib
-
+import stackexchange
+import json
 from pyquery import PyQuery as pq
 
+S_KEY = 'PYAS3ZkXgxblnJFaB1BAmA(('
 GOOGLE_SEARCH_URL = "https://www.google.com/search?q=site:stackoverflow.com%20{0}"
 DUCK_SEARCH_URL = "http://duckduckgo.com/html?q=site%3Astackoverflow.com%20{0}"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17"
+
+site = stackexchange.Site(stackexchange.StackOverflow)
+site.be_inclusive()
+# so = stackexchange.Site(stackexchange.StackOverflow, S_KEY)
+# so.impose_throttling = True
+# so.throttle_stop = False
 
 
 def get_result(url):
     print "URL :: " + url
     return requests.get(url, headers={'User-Agent': USER_AGENT}).text
+
+def get_stack_result(q_id):
+    question = site.question(q_id) 
+    return question.answers[0].body
+
 
 
 def is_question(link):
@@ -66,6 +79,10 @@ def get_instructions(args):
         if args.get('link'):
             return link
 
+        if "stackoverflow.com" in link:
+            arr = link.split('/')
+            return get_stack_result(int(arr[4]))
+        
         link = link + '?answertab=votes'
         page = get_result(link)
         html = pq(page)

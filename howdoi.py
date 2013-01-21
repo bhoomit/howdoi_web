@@ -34,6 +34,7 @@ def get_result(url):
     return requests.get(url, headers={'User-Agent': USER_AGENT}).text
 
 def get_stack_result(q_id):
+    print str(q_id)
     question = site.question(q_id) 
     return question.answers[0].body
 
@@ -81,7 +82,7 @@ def get_instructions(args):
         #link = get_link_at_pos(links, args['pos'])
         if args.get('link'):
             return link
-
+        print link
         if "stackoverflow.com" in link:
             arr = link.split('/')
             first_answer = pq(get_stack_result(int(arr[4])))

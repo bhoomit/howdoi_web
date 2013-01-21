@@ -34,7 +34,7 @@ def get_result(url):
 
 def get_stack_result(q_id):
     question = site.question(q_id) 
-    return question.answers[0].body
+    return str(question.answers[0].body)
 
 
 

@@ -90,7 +90,10 @@ def get_instructions(args):
         print link
         if "stackoverflow.com" in link:
             arr = link.split('/')
-            first_answer = pq(get_stack_result(int(arr[4])))
+            try:
+                first_answer = pq(get_stack_result(int(arr[4])))
+            except: 
+                continue
         else:
             link = link + '?answertab=votes'
             page = get_result(link)

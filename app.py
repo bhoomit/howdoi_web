@@ -1,8 +1,7 @@
-import os
-import urllib, json, traceback
+import urllib, json, traceback, howdoi, os
 from functools import wraps
 from flask import Flask, redirect, request, current_app, jsonify
-import howdoi
+
 
 app = Flask(__name__)
 

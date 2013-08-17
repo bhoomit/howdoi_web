@@ -1,9 +1,12 @@
 howdoi_web
 ==========
 
-Added REST api to [howdoi](https://github.com/gleitz/howdoi) python module.
+REST on top of [howdoi](https://github.com/gleitz/howdoi) python module.
 
-Using Stackoverflow API instead of Fetching page and parsing HTML.
+Addition:
+
+1. REST API
+2. Using Stackoverflow API instead of Fetching page and parsing HTML.
 
 Usage:
 
